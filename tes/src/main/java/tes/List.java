@@ -4,6 +4,7 @@ package tes;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -46,7 +47,8 @@ public class List extends HttpServlet {
 			QuestionsDao dao = new QuestionsDao();
 			//ArrayList(配列)としてQuestionBean型のlistを作り、そこにdaoオブジェクト(QuestionsDaoクラス)が持つfindAllメソッドを実行した戻り値を格納
 			//QuestionDaoでArrayList<QuestionBean> list = new ArrayList<QuestionBean>で定義しているからdao.findAll();の型にしている
-			ArrayList<QuestionsBean> list =  dao.findAll();
+			ArrayList<QuestionsBean> list = dao.findAll();
+			Collections.shuffle(list);
 			//Correct_answersDao型のオブジェクト、「dao_answer」変数を用意
 			Correct_answersDao dao_answer = new Correct_answersDao();
 			//ArrayList(配列)としてCorrect_answersBaen型のlist_answerを作り、そこにdao_answerオブジェクト(Correct_answersDaoクラス)が持つfindAllメソッドを実行した戻り値を格納
