@@ -47,23 +47,21 @@ public class History_Connection extends HttpServlet {
 		try {
 			
 			historiesDao = new HistoriesDao();
+			HistoriesBean historiesBean = new HistoriesBean();
+			UsersDao usersdao = new UsersDao();
 			
 			HttpSession session = request.getSession(false);
 			String userId = (String) session.getAttribute("Login_id");
 			
-			
 			int userIdNum = Integer.parseInt(userId);
-			ArrayList<HistoriesBean> list = historiesDao.findAll();
-			UsersDao usersdao = new UsersDao();
-			
 			
 			UsersBean user = usersdao.find(userIdNum);
-			HistoriesBean historiesBean = new HistoriesBean();
+			
 			
 			historiesBean.setUserId(user.getId());
+			ArrayList<HistoriesBean> list = historiesDao.findAll(userId);
 			
-			request.setAttribute("GetName", user.getName());
-			request.setAttribute("Qusertions_list",list);
+			request.setAttribute("History_list",list);
 			
 			request.getRequestDispatcher("./history.jsp").forward(request, response);
 		} catch (Exception e) {

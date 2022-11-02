@@ -56,7 +56,7 @@ public class HistoriesDao extends ConnectionDao {
 				}
 			}
 		}
-	public ArrayList<HistoriesBean> findAll() throws DAOException, Exception {
+	public ArrayList<HistoriesBean> findAll(String user_id) throws DAOException, Exception {
 		if (con == null) {
 			setConnection();
 		}
@@ -70,20 +70,20 @@ public class HistoriesDao extends ConnectionDao {
 			st = con.prepareStatement(sql);
 			/** SQL 実行 **/
 			//Sessionのuser_idとつなげる
-			st = 
+			st.setString(1,user_id);
 			rs = st.executeQuery();
-			/** select文の結果をArrayListに格納 **/
+			/** select文の結果 vをArrayListに格納 **/
 			ArrayList<HistoriesBean> list = new ArrayList<HistoriesBean>();
 			while (rs.next()) {
 			
-				int user_id = rs.getInt("user_id");
+				int users_id = rs.getInt("user_id");
 				int point = rs.getInt("point");
 				
-				st.setInt(1,user_id);
+				
 				
 				
 				Timestamp created_at = rs.getTimestamp("created_at");
-				HistoriesBean bean = new HistoriesBean(0,user_id,point);
+				HistoriesBean bean = new HistoriesBean(0,users_id,point);
 				bean.setCreatedAt(created_at);
 			
 				list.add(bean);
