@@ -2,6 +2,8 @@ package tes;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
+import java.util.ArrayList;
 
 public class HistoriesDao extends ConnectionDao {
 	
@@ -22,7 +24,7 @@ public class HistoriesDao extends ConnectionDao {
 			//insertでquestionテーブルのquestionの中身を入力できる処理
 			
 			//questionテーブルのレコード追加処理。またcurrent_timestamp()を使うことで現在時間も取得している
-			String sql = "INSERT INTO histories ( user_id, point, created_at, ) values (?,?,current_timestamp());";
+			String sql = "INSERT INTO histories ( user_id, point, created_at) values (?,?,current_timestamp());";
 			/** PreparedStatement オブジェクトの取得**/
 			st = con.prepareStatement(sql);
 			//入力の中身をセットさせる
@@ -54,5 +56,57 @@ public class HistoriesDao extends ConnectionDao {
 				}
 			}
 		}
+	public ArrayList<HistoriesBean> findAll() throws DAOException, Exception {
+		if (con == null) {
+			setConnection();
+		}
+		
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		try {
+			//order by created_atで昇順で並び替えをする。
+			String sql = "SELECT  user_id, point, created_at FROM histories order by created_at where user_id = ? ;";
+			/** PreparedStatement オブジェクトの取得**/
+			st = con.prepareStatement(sql);
+			/** SQL 実行 **/
+			//Sessionのuser_idとつなげる
+			st = 
+			rs = st.executeQuery();
+			/** select文の結果をArrayListに格納 **/
+			ArrayList<HistoriesBean> list = new ArrayList<HistoriesBean>();
+			while (rs.next()) {
+			
+				int user_id = rs.getInt("user_id");
+				int point = rs.getInt("point");
+				
+				st.setInt(1,user_id);
+				
+				
+				Timestamp created_at = rs.getTimestamp("created_at");
+				HistoriesBean bean = new HistoriesBean(0,user_id,point);
+				bean.setCreatedAt(created_at);
+			
+				list.add(bean);
+			}
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new DAOException("レコードの取得に失敗しました");
+		 } finally {
+			try {
+				if (rs != null) {
+						rs.close();
+				}
+					
+				if (st != null) {
+						st.close();
+				}
+				close();
+			} catch (Exception e) {
+				e.printStackTrace();
+//				throw new DAOException("リソースの開放に失敗しました");
+			}
+		}
+	}
 
 }
