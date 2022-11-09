@@ -63,24 +63,22 @@ public class HistoriesDao extends ConnectionDao {
 		
 		PreparedStatement st = null;
 		ResultSet rs = null;
-		try {
+		try {//SELECT  user_id, point, created_at FROM histories order by created_at where user_id = ? ;
 			//order by created_atで昇順で並び替えをする。
-			String sql = "SELECT  user_id, point, created_at FROM histories order by created_at where user_id = ? ;";
+			String sql = "SELECT * FROM histories  where user_id = ? ;";
 			/** PreparedStatement オブジェクトの取得**/
 			st = con.prepareStatement(sql);
 			/** SQL 実行 **/
 			//Sessionのuser_idとつなげる
 			st.setString(1,user_id);
 			rs = st.executeQuery();
+			
 			/** select文の結果 vをArrayListに格納 **/
 			ArrayList<HistoriesBean> list = new ArrayList<HistoriesBean>();
 			while (rs.next()) {
 			
 				int users_id = rs.getInt("user_id");
 				int point = rs.getInt("point");
-				
-				
-				
 				
 				Timestamp created_at = rs.getTimestamp("created_at");
 				HistoriesBean bean = new HistoriesBean(0,users_id,point);
@@ -95,11 +93,11 @@ public class HistoriesDao extends ConnectionDao {
 		 } finally {
 			try {
 				if (rs != null) {
-						rs.close();
+					rs.close();
 				}
-					
+				
 				if (st != null) {
-						st.close();
+					st.close();
 				}
 				close();
 			} catch (Exception e) {
