@@ -8,26 +8,39 @@
 </head>
 <body>
 
-<%int user = (int)request.getAttribute("GetName");%>
+<%String user = (String)request.getAttribute("GetName");%>
 <%int questions_id = (int)request.getAttribute("Question_cnt");%>
 <%int point = (int)request.getAttribute("Point");%>
 <%int result = (int)request.getAttribute("Result");%>
 <%String date = (String)request.getAttribute("Date");%>
 
 
-<form action="Test_result_item" method="post"><br>
+<form action="Test_result_item" method="post">
+		
+		<input type="hidden" name="prm_result"value="1">
+		
+		
+		<input type="submit" value="top">
+</form>
+<form action="Test_result_item">
+		
+		<input type="hidden" name="prm_result"value="2">
+		
+		<input type="submit" value="logout"><br>
+		
+</form>
 
-		<input type="submit"name="prm_result"value="top">
-		<input type="submit"name="prm_result"value="logout">
+<form action="Test_result_item" method="post"><br>
 		
-		<input type="text"size="100"value="テスト結果">
+		テスト結果<br>
 		
-		<input type="text"name="uesrs"value="<%=user%>+さん;"><br>
-		<input type="text"name="question_point"value="<%=questions_id%>+問中+<%=point%>+問正解です。;"><br>
-		<input type="text"name="result"value="<%=result%>+点でした;"><br>
-		<input type="text"name="dete"value="<%=date%>"><br>
+		<%=user%>さん<br>
+		<%=questions_id%>問中<%=point%>問正解です。<br>
+		<%=result%>点でした<br>
+		<%=date%><br>
 		
-		<input type="submit"name="prm_result"value="history">
+		<input type="hidden" name="prm_result"value="3">
+		<input type="submit"value="history">
 		
 </form>
 </body>

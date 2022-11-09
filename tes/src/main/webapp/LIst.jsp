@@ -52,7 +52,7 @@
 <!-- valueで2の初期値をしている -->
 		<input type="hidden" name="parem" value="2">
 		<!--  submitでは送信ボタンとしての機能、value="編集"で初期値を指定している -->
-		<input type="submit" value="編集">
+		<input type="submit" value="編集"><br>
 		<!-- value="questionsBean.getId()"で問題文の番号をとっている -->
 		<input type="hidden" name="questions_id" value="<%=questionsBean.getId()%>">
 		
@@ -62,7 +62,7 @@
 <!-- valueで3の初期値をしている -->
 		<input type="hidden" name="parem" value="3">
 		<!--  submitでは送信ボタンとしての機能、value="削除"で初期値を指定している -->
-		<input type="submit" value="削除"> 
+		<input type="submit" value="削除"> <br>
 		<input type="hidden" name="questions_id" value="<%=questionsBean.getId()%>">
 </form>
 		<!-- int型でanswer_noを値を0に定義 -->

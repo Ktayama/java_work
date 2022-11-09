@@ -29,29 +29,24 @@
 
 <form action="Register_item" method="post">
 
-<!-- type="text"では文字列を入力できるテキストボックスを生成している。 入れ物の名前をname="questions_text"と指定している -->
-        <label>問題 :</label><input type="text"name="questions_text"><br>
-        
-<!-- type="text"では文字列を入力できるテキストボックスを生成している。 入れ物の名前をname="answer_text"と指定している -->
-        <label>答え :</label><input type="text" name="answer_text"><br>
+		<!-- type="text"では文字列を入力できるテキストボックスを生成している。 入れ物の名前をname="questions_text"と指定している -->
+		<label>問題 :</label><input type="text"name="questions_text"><br>
+		<!-- type="text"では文字列を入力できるテキストボックスを生成している。 入れ物の名前をname="answer_text"と指定している -->
+		<label>答え :</label><input type="text" name="answer_text"><br>
 		
 		
-<!-- jsの方でテーブルを取得した値をjspに渡す -->
-<!-- border="1"は罫線 -->
-<table id="answer_text" border="1">
+		<!-- jsの方でテーブルを取得した値をjspに渡す -->
+		<!-- border="1"は罫線 -->
+		<table id="answer_text" border="1">
 		
-</table>
-<!-- type="submit"では送信ボタンとしての機能、value="確認"で初期値を指定している-->
-	    <input type="submit"  name="prm" value="確認">
-	    
-<!-- type="submit"では送信ボタンとしての機能、value="戻る"で初期値を指定している-->
-	    <input type="submit" name="prm"  value="戻る">
-	    
+		</table>
+		<!-- type="submit"では送信ボタンとしての機能、value="確認"で初期値を指定している-->
+		<input type="submit"  name="prm" value="確認">
+		<!-- type="submit"では送信ボタンとしての機能、value="戻る"で初期値を指定している-->
+		<input type="submit" name="prm"  value="戻る">
 </form>
-<!-- 追加ボタンで表示onclickイベント設定 -->
-<input type="button" value="追加" id="coladd" onclick="coladd()">
+		<!-- 追加ボタンで表示onclickイベント設定 -->
+		<input type="button" value="追加" id="coladd" onclick="coladd()">
 		
-		
-
 </body>
 </html>

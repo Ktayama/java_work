@@ -9,10 +9,12 @@
 <body>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="tes.HistoriesBean"%>
+<%@ page import="tes.UsersBean"%>
 
-<%ArrayList<HistoriesBean> Questions_list = (ArrayList<HistoriesBean>)request.getAttribute("Qusertions_list"); %>
+<%ArrayList<HistoriesBean> Histories_liet = (ArrayList<HistoriesBean>)request.getAttribute("History_list"); %>
+<%UsersBean Users = (UsersBean)request.getAttribute("Users"); %>
 
-<%System.out.println((ArrayList<HistoriesBean>)request.getAttribute("Qusertions_list")) ;%>
+<%System.out.println((ArrayList<HistoriesBean>)request.getAttribute("History_list")) ;%>
 
 <form action="top.jsp" method="post">
 		
@@ -20,7 +22,7 @@
 		
 		<input type="submit" name="top" value="top">
 </form>
-<form action="logout.jsp">
+<form action="logout.jsp" method="post">
 		
 		<input type="hidden" name="pram">
 		
@@ -28,20 +30,21 @@
 		
 </form>
 <form>
-		
-		履歴<br>
-		
-		<%for (HistoriesBean historiesBean : Questions_list) {%>
-		
-				名前<br>
-				<%=historiesBean.getUserId() %>
-				点数<br>
-				<%=historiesBean.getPoint() %>
-				現在時刻
-				<%=historiesBean.getCreatedAt() %>
-				
-				
-		<%} %>
+<%for (HistoriesBean historiesBean : Histories_liet) {%>
+	
+履歴<br>
+	<table border="1">
+		<tr>
+			<th>名前</th>
+			<th>点数</th>
+			<th>現在時刻</th>
+		</tr>
+		<tr>
+			<td><%=Users.getName()%></td>
+			<td><%=historiesBean.getPoint() %></td>
+			<td><%=historiesBean.getCreatedAt() %></td>
+	</table>
+<%} %>
 		
 		
 </form>

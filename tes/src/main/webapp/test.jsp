@@ -22,7 +22,7 @@
   
   
  
-<form action="./Test_item" method="post">
+<form action="./Test_result" method="post">
 
 <!-- int型でquestion_no = 0の値を定義 -->
 <%int question_no =0;%>
@@ -32,18 +32,14 @@
 	<%question_no =question_no +1;%>
 <!-- 問題数字を定義している -->
 <!-- value="questionsBean.getQuestion()"のvalueで問題文を初期値に指定している -->
-
 		
 		
-	<p><%=question_no%>：<br><input type="text" name="" value="<%=questionsBean.getQuestion()%>"></p>
+	<p><%=question_no%>：<br><%=questionsBean.getQuestion()%></p>
 	<input type="hidden" name="questions_id" value="<%=questionsBean.getId()%>">
 		<!-- int型でanswer_noを値を0に定義 -->
 		<%int answer_no =0;%>
 		<!-- listは0からだから1番目からCorrect_anser_listをloopして一件づつ表示させる -->
 		<!-- size()でCorrect_anser_listの要素数を調べている -->
-		
-		
-		
 		
 		<!-- 答えのanswer_noが1づつ増える -->
 		<!-- value="correct_answersBaen.getAnswer()"の答え文を初期化値に指定 -->
