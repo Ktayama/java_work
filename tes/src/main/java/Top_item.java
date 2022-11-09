@@ -1,8 +1,6 @@
 
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,20 +8,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import tes.QuestionsBean;
-import tes.QuestionsDao;
-
 /**
- * Servlet implementation class Test_Connection
+ * Servlet implementation class TOP
  */
-@WebServlet("/Test_Connection")
-public class Test_Connection extends HttpServlet {
+@WebServlet("/Top_item")
+public class Top_item extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Test_Connection() {
+    public Top_item() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,7 +28,7 @@ public class Test_Connection extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doPost(request, response);
+		doPost(request,response);
 	}
 
 	/**
@@ -42,22 +37,20 @@ public class Test_Connection extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		
-		try {
-			QuestionsDao dao = new QuestionsDao();
-			
-			ArrayList<QuestionsBean> list = dao.findAll();
-			Collections.shuffle(list);
-			
-			
-			request.setAttribute("Qusertions_list",list);
-			request.getRequestDispatcher("./test.jsp").forward(request, response);
-			
-					
-		} catch (Exception e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
-		}
+		//top.jspでhiddenで設定したパラメータをgetParameterで取得してString paramに代入している
+		String param = request.getParameter("param");
+		//hiddenの指定の値が押された時
+        if (param.equals("1"))
+         {
+        	//listの内容に出したい処理
+        	response.sendRedirect("./List_Connection");
+        	return;
+         } else if (param.equals("2")) {
+             request.getRequestDispatcher("./Test_Connection").forward(request, response);
+         } else if (param.equals("3")) {
+             request.getRequestDispatcher("./History_Connection").forward(request, response);
+
+         }
 	}
 
 }

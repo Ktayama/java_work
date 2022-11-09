@@ -36,17 +36,20 @@ public class Test_result_item extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String pram =request.getParameter("pram");
+		String pram =request.getParameter("prm_result");
 		
-		if(pram.equals("top"))
+		if(pram.equals("1"))
 		{
 			request.getRequestDispatcher("./top.jsp").forward(request, response);
-		}else if(pram.equals("logout"))
+			
+		}else if(pram.equals("2"))
 		{
 			request.getRequestDispatcher("./logout.jsp").forward(request, response);
-		}else if(pram.equals("history"))
+			
+		}else if(pram.equals("3"))
 		{
 			request.getRequestDispatcher("./History_Connection").forward(request, response);
+			
 		}
 	}
 

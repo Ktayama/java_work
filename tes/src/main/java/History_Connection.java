@@ -47,7 +47,7 @@ public class History_Connection extends HttpServlet {
 		try {
 			
 			historiesDao = new HistoriesDao();
-			HistoriesBean historiesBean = new HistoriesBean();
+			
 			UsersDao usersdao = new UsersDao();
 			
 			HttpSession session = request.getSession(false);
@@ -58,9 +58,10 @@ public class History_Connection extends HttpServlet {
 			UsersBean user = usersdao.find(userIdNum);
 			
 			
-			historiesBean.setUserId(user.getId());
+			
 			ArrayList<HistoriesBean> list = historiesDao.findAll(userId);
 			
+			request.setAttribute("Users",user);
 			request.setAttribute("History_list",list);
 			
 			request.getRequestDispatcher("./history.jsp").forward(request, response);
