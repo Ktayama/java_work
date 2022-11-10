@@ -65,7 +65,7 @@ public class HistoriesDao extends ConnectionDao {
 		ResultSet rs = null;
 		try {//SELECT  user_id, point, created_at FROM histories order by created_at where user_id = ? ;
 			//order by created_atで昇順で並び替えをする。
-			String sql = "SELECT * FROM histories  where user_id = ? ;";
+			String sql = "SELECT * FROM histories where user_id = ? order by created_at;";
 			/** PreparedStatement オブジェクトの取得**/
 			st = con.prepareStatement(sql);
 			/** SQL 実行 **/
