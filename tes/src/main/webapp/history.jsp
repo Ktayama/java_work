@@ -6,6 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<link rel="stylesheet" href="wrap.css">
+<link rel="stylesheet" href="common_center.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <body>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="tes.HistoriesBean"%>
@@ -16,23 +19,14 @@
 
 <%System.out.println((ArrayList<HistoriesBean>)request.getAttribute("History_list")) ;%>
 
-<form action="top.jsp" method="post">
-		
-		<input type="hidden" name="pram">
-		
-		<input type="submit" name="top" value="top">
-</form>
-<form action="logout.jsp" method="post">
-		
-		<input type="hidden" name="pram">
-		
-		<input type="submit" name="logout" value="logout"><br>
-		
-</form>
+
 <form>
+<script src="item.js"></script>
+<div class="boxwrap">
+<h2>履歴</h2><br>
 <%for (HistoriesBean historiesBean : Histories_liet) {%>
 	
-履歴<br>
+
 	<table border="1">
 		<tr>
 			<th>名前</th>
@@ -46,7 +40,7 @@
 	</table>
 <%} %>
 		
-		
+</div>		
 </form>
 </body>
 </html>
