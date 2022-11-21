@@ -46,14 +46,18 @@ public class Test_result extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.setCharacterEncoding("UTF-8");
 		
-		String[] question_id = request.getParameterValues("question_id");
+		String[] question_id = request.getParameterValues("questions_id");
 		String[] corrct_answer = request.getParameterValues("correct_answer");
 		
 		HttpSession session = request.getSession(false);
 		String userId = (String) session.getAttribute("Login_id");
-		int userIdNum = Integer.parseInt(userId);
+		//ログインしてなかった場合.ログイン時間が30分
 		
+		
+		int userIdNum = Integer.parseInt(userId);
+	try {
 		HistoriesDao historiesdao =new HistoriesDao();
 		HistoriesBean historiesBean = new HistoriesBean();
 		Correct_answersDao codao = new Correct_answersDao();
@@ -67,7 +71,8 @@ public class Test_result extends HttpServlet {
 			ArrayList<Correct_answersBean> list = codao.findByQuestionsId(Integer.parseInt(question_id[i]));
 			for(int j = 0;j< list.size(); j++)
 			{
-				
+				System.out.println(list.get(j).getAnswer());
+				System.out.println(corrct_answer[i]); 
 				if(list.get(j).getAnswer().equals(corrct_answer[i]))
 				{
 					Point++;
@@ -76,6 +81,7 @@ public class Test_result extends HttpServlet {
 				
 			}
 		}
+		
 		result = Math.round((100 * Point) / question_id.length);
 		Date dateObj = new Date();
 		SimpleDateFormat dateFormat = new SimpleDateFormat( "yyyy/MM/dd HH:mm:ss" );
@@ -83,12 +89,15 @@ public class Test_result extends HttpServlet {
 		
 		UsersBean user = usersdao.find(userIdNum);
 		
-		historiesBean setUserId = (int)sesstion.getAttribute(Integer.parseInt(user))
-		historiesBean setPoint(result);
+		
+		historiesBean.setUserId(user.getId());
+		
+		historiesBean.setPoint((int)result);
 		historiesdao.Insert(historiesBean); 
 		
 		
 		request.setAttribute("GetName", user.getName());
+		//問題数を画面に送るためlengthを使用
 		request.setAttribute("Question_cnt", question_id.length);
 		request.setAttribute("Point", Point);
 		request.setAttribute("Result",(int)result);
@@ -97,6 +106,10 @@ public class Test_result extends HttpServlet {
 		
 		request.getRequestDispatcher("./test_result.jsp").forward(request, response);
 		
+	} catch (Exception e1) {
+		// TODO 自動生成された catch ブロック
+		e1.printStackTrace();
+	}
 	}
 
 }

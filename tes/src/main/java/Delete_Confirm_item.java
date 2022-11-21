@@ -51,7 +51,7 @@ public class Delete_Confirm_item extends HttpServlet {
 		}
 		System.out.println("no");
 		//noだったらList.jspに移動する
-		request.getRequestDispatcher("./List.jsp").forward(request, response);
+		request.getRequestDispatcher("./List_Connection").forward(request, response);
 	}
 }
 

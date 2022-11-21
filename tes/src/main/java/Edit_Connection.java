@@ -17,7 +17,7 @@ import tes.QuestionsDao;
 /**
  * Servlet implementation class Edit_item
  */
-@WebServlet("/Edit_item")
+@WebServlet("/Edit_Connection")
 public class Edit_Connection extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Edit_Confirm_item
  */
-@WebServlet("/Edit_Confirm_item")
+@WebServlet("/Edit_item")
 public class Edit_item extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -65,7 +65,7 @@ public class Edit_item extends HttpServlet {
 		}
 		System.out.println("no");
 		//noだったらList.jspに移動する
-		request.getRequestDispatcher("./List.jsp").forward(request, response);
+		request.getRequestDispatcher("./List_item").forward(request, response);
 	}
 
 }

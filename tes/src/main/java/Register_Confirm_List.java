@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Register_Confirm
  */
-@WebServlet("/Register_Confirm")
+@WebServlet("/Register_Confirm_List")
 public class Register_Confirm_List extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

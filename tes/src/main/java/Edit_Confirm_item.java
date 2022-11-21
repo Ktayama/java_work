@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Edit_Confirm_List_item
  */
-@WebServlet("/Edit_Confirm_List_item")
+@WebServlet("/Edit_Confirm_item")
 public class Edit_Confirm_item extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -30,7 +30,7 @@ public class Edit_Confirm_item extends HttpServlet {
 		// TODO Auto-generated method stub
 		doPost(request, response);
 	}
-
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -40,7 +40,7 @@ public class Edit_Confirm_item extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String prm_edit_confirm = request.getParameter("prm_edit_confirm");
 		if(prm_edit_confirm.equals("更新")) {
-			
+					
 					
 			//answerの答えとidのパラメータを受け取る
 			String[] prm_answer =request.getParameterValues("edit_answer");

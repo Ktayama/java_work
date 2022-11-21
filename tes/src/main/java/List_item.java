@@ -39,11 +39,11 @@ public class List_item extends HttpServlet {
 		
 		//LIst.jspでhiddenで指定したパラメーターをgetParameterでString paramに代入している
 		String param = request.getParameter("parem");
-	
+		
 		//新規登録画面に移動処理
 		//hiddenで指定の値が押された時
 				if (param.equals("1"))
-				{ 
+				{
 					
 					//Registerの内容に出したい処理
 					request.getRequestDispatcher("./Register.jsp").forward(request, response);
@@ -57,7 +57,7 @@ public class List_item extends HttpServlet {
 				{
 					System.out.println(request.getParameter("questions_id"));
 					request.setAttribute("Questions_id", request.getParameter("questions_id"));
-					request.getRequestDispatcher("./Delete_item").forward(request, response);
+					request.getRequestDispatcher("./Delete_Connection").forward(request, response);
 				}
 	}
 

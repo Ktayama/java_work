@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Edit_Confirm_List
  */
-@WebServlet("/Edit_Confirm_List")
+@WebServlet("/Edit_List")
 public class Edit_List extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

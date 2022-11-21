@@ -61,7 +61,7 @@ public class Register_Confirm_item extends HttpServlet {
 				}
 				//Register.jspに戻る処理
 				System.out.println("no");
-				request.getRequestDispatcher("./Register.jsp").forward(request, response);
+				request.getRequestDispatcher("./List_Connection").forward(request, response);
 			}
 	}
 
