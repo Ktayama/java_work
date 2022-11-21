@@ -1,0 +1,89 @@
+
+@charset "UTF-8";
+
+body {
+  /*背景色を設定*/
+  background-color: #8392e6;
+  /*フォントファミリー名：フォント[Robot],総称フォント[sans-serif]*/
+  font-family: 'Roboto', sans-serif;
+}
+
+/*.button a{
+width: 400px;
+  height: 150px;
+  background-color: blue;
+  border-radius: 5px;
+  line-height: 150px;
+  color: #fff;
+  text-align: center;
+}*/
+
+
+.buttonA button{
+	background: #eee;
+	/*全ての角を3pxだけ丸くしてる*/
+	border-radius: 8px;
+	/*枠線を2px太くさせて、色を設定する*/
+	border: 2px solid #6bb6ff;
+	
+	
+	/*relativeは、要素の現在位置を指定することができる*/
+	/*親要素*/
+	position: relative;
+	
+	/*ブロックレベルでフレックスコンテナのボックスを形成させる*/
+	display: flex;
+	/*justify-contentは、水平方向の位置を指定できるof主軸の方向に対してFlexアイテムをどのように配置するか指定できる*/
+	/*space-aroundは、両端の外側には半分のサイズの感覚を開ける*/
+	justify-content: space-around;
+	/*フレックスアイテムを中央に配置する*/
+	align-items: center;
+	/*行間(行の高さ)を調整する*/
+	line-height: 1.4;
+	
+	/*ブロックレベル要素を中央に配置する*/
+	margin: 0 auto;
+	/*max-widthは、拡大する最大値*/
+	max-width: 350px;
+	/*横に広がる大きさ*/
+	width: 100%;
+	/*要素の内側の余白 上下が16px,左右32px*/
+	padding: 1em 2em 1em 2em;
+	/*フォントの色：黒色*/
+	color: #313131;
+	/*0.3秒後に最初と最後がゆっくり変化*/
+	transition: 0.3s ease-in-out;
+	/*transitonで指定したプロパティ：font-wightは、フォントの太さ(あるいは重み)*/
+	font-weight: bold;
+	text-decoration:underline solid
+	
+}
+/*afterで要素の直後に内容を追加[ >の処理]*/
+.buttonA button:after {
+	/*要素の直後に空の値を挿入する*/
+	content: "";
+	/*relativeに対して子要素*/
+	position: absolute;
+	/* > の位置を50%下げる*/
+	top: 50%;
+	/**/
+	right: 2rem;
+	font-size: 90%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: right 0.3s;
+	width: 6px;
+	height: 6px;
+	border-top: solid 2px currentColor;
+	border-right: solid 2px currentColor;
+	transform: translateY(-50%) rotate(45deg);
+}
+.buttonA button:hover {
+  background: #6bb6ff;
+  color: #FFF;
+}
+.buttonA button:hover:after {
+  right: 1.4rem;
+}
+
