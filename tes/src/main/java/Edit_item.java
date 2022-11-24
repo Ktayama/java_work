@@ -58,14 +58,14 @@ public class Edit_item extends HttpServlet {
 			request.setAttribute("Answer[]",answer);
 			request.setAttribute("Questions_id",request.getParameter("questions_id"));
 			request.setAttribute("Answer_id[]",answer_id);
-			System.out.println("ok");
+			
 			//okだったらEdit_Listに移動する
 			request.getRequestDispatcher("./Edit_List").forward(request, response);
 			return;
 		}
-		System.out.println("no");
+		
 		//noだったらList.jspに移動する
-		request.getRequestDispatcher("./List_item").forward(request, response);
+		request.getRequestDispatcher("./List_Connection").forward(request, response);
 	}
 
 }

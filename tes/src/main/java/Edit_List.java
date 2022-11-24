@@ -75,17 +75,18 @@ public class Edit_List extends HttpServlet {
 			
 			request.setAttribute("a_text",error);
 			
-			System.out.println("ok");
+			
 			//文字数okならEdit_Confirm.jspに飛ばす
 			RequestDispatcher dispacher = request.getRequestDispatcher("./Edit_Confirm.jsp");
 			dispacher.forward(request, response);
 			//エラー文字をjqpに表示させる
 		} else {
 			
+			//edit.jspに戻すと思う
 			request.setAttribute("a_text",error);
 			//文字数オーバーだったらngでRsgister.jspに戻す
 			System.out.println("no");
-			RequestDispatcher dispacher = request.getRequestDispatcher("./Register.jsp");
+			RequestDispatcher dispacher = request.getRequestDispatcher("./Edit_Connection");
 			dispacher.forward(request, response);
 		}
 		

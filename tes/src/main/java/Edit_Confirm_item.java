@@ -1,5 +1,3 @@
-
-
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -38,30 +36,35 @@ public class Edit_Confirm_item extends HttpServlet {
 		// TODO Auto-generated method stub
 		//文字化け防止
 		request.setCharacterEncoding("UTF-8");
+		
 		String prm_edit_confirm = request.getParameter("prm_edit_confirm");
+		//answerの答えとidのパラメータを受け取る
+		String[] prm_answer =request.getParameterValues("edit_answer");
+		String[] prm_answer_id =request.getParameterValues("edit_answer_id");
+		
 		if(prm_edit_confirm.equals("更新")) {
 					
 					
-			//answerの答えとidのパラメータを受け取る
-			String[] prm_answer =request.getParameterValues("edit_answer");
-			String[] prm_answer_id =request.getParameterValues("edit_answer_id");
+		
 			
 			//questionsの問題文とidパラメータをセットさせる
-			//questionsの問題文とidのパラメータを受け取る	
+			//questionsの問題文とidのパラメータを受け取る
 			request.setAttribute("Edit_questions",request.getParameter("edit_questions"));
 			request.setAttribute("Edit_questions_id",request.getParameter("edit_questions_id"));
 			//answerの答えとidをパラメータをセットさせる
 			request.setAttribute("Edit_answer",prm_answer);
 			request.setAttribute("Edit_answer_id",prm_answer_id);
 			//okならRegister.javaに移動
-			System.out.println("ok");
+			
 			request.getRequestDispatcher("./Register").forward(request, response);
-		}else {
-			//noならEditに移動
-			System.out.println("no");
-			request.getRequestDispatcher("./Edit.jsp").forward(request, response);
-		}
+		}else if(prm_edit_confirm.equals("戻る")) {
+			
+			
+			//answerの答えとidのパラメータを受け取る
+			request.setAttribute("questions_id",request.getParameter("edit_questions_id"));
+			System.out.println(request.getParameter("edit_questions_id"));
+			request.getRequestDispatcher("./Edit_Connection").forward(request, response);
 		
+		}
 	}
-
 }
