@@ -17,7 +17,7 @@ import tes.QuestionsDao;
 /**
  * Servlet implementation class Edit_item
  */
-@WebServlet("/Edit_item")
+@WebServlet("/Edit_Connection")
 public class Edit_Connection extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -42,8 +42,13 @@ public class Edit_Connection extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String questios_id = request.getParameter("questions_id");
+		String questios_id = (String)request.getParameter("questions_id");
 		
+		if(questios_id==null)
+		{
+			questios_id = (String)request.getAttribute("questions_id");
+		}
+		System.out.println(questios_id);
 		//５３行目のfindを使うためQuestionsDao Daoをnew=インスタンス化させる
 		//=で値を定義していないとnullしか入っていない
 		QuestionsDao Dao;

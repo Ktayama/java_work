@@ -1,5 +1,6 @@
 package tes;
 
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -56,7 +57,6 @@ public class Correct_answersDao extends ConnectionDao {
 			} catch (Exception e) {
 				e.printStackTrace();
 //				throw new DAOException("リソースの開放に失敗しました");
-
 			}
 		}
 	}

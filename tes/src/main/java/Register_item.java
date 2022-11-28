@@ -93,7 +93,7 @@ public class Register_item extends HttpServlet {
 		
 		//確認・追加・削除以外押されたら戻るボタンに入るように表示をnoにしている
 		System.out.println("no");
-		request.getRequestDispatcher("./List").forward(request, response);
+		request.getRequestDispatcher("./List_Connection").forward(request, response);
 	}
 
 }

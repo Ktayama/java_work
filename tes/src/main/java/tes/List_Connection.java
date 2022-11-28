@@ -2,6 +2,11 @@ package tes;
 
 
 
+
+
+
+
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,14 +20,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class List
  */
-@WebServlet("/List")
-public class List extends HttpServlet {
+@WebServlet("/List_Connection")
+public class List_Connection extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public List() {
+    public List_Connection() {
         super();
         // TODO Auto-generated constructor stub
     }

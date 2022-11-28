@@ -2,6 +2,7 @@
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Dlete_Confirm_item
+ * Servlet implementation class ItemList
  */
-@WebServlet("/Delete_Confirm_item")
-public class Delete_Confirm_item extends HttpServlet {
+@WebServlet("/ItemList")
+public class ItemList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Delete_Confirm_item() {
+    public ItemList() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,21 +38,16 @@ public class Delete_Confirm_item extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		request.setCharacterEncoding("UTF-8");
+		String pram = request.getParameter("pram");
 		
-		String delete_prm_confirm = (String)request.getParameter("delete_prm_confirm");
-		
-		if(delete_prm_confirm.equals("削除")) {
-			request.setAttribute("Delete_questions", request.getParameter("delete_questions"));
-			request.setAttribute("Delete_answer", request.getParameterValues("delete_answers"));
-			request.setAttribute("Delete_questions_id", request.getParameter("delete_questions_id"));
-			request.setAttribute("Delete_answer_id", request.getParameterValues("delete_answers_id"));
-			request.getRequestDispatcher("./Delete").forward(request, response);
-			return;
+		if(pram.equals("top")) {
+			
+			RequestDispatcher dispacher = request.getRequestDispatcher("./top.jsp");
+			dispacher.forward(request, response);
+		}else if(pram.equals("logout")) {
+			
+			request.getRequestDispatcher("./logout.jsp").forward(request, response);
 		}
-		System.out.println("no");
-		//noだったらList.jspに移動する
-		request.getRequestDispatcher("./List_Connection").forward(request, response);
 	}
-}
 
+}

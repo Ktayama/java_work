@@ -9,16 +9,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Dlete_Confirm_item
+ * Servlet implementation class Test_result_item
  */
-@WebServlet("/Delete_Confirm_item")
-public class Delete_Confirm_item extends HttpServlet {
+@WebServlet("/Test_result_item")
+public class Test_result_item extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Delete_Confirm_item() {
+    public Test_result_item() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,22 +36,13 @@ public class Delete_Confirm_item extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String pram =request.getParameter("prm_result");
 		
-		request.setCharacterEncoding("UTF-8");
-		
-		String delete_prm_confirm = (String)request.getParameter("delete_prm_confirm");
-		
-		if(delete_prm_confirm.equals("削除")) {
-			request.setAttribute("Delete_questions", request.getParameter("delete_questions"));
-			request.setAttribute("Delete_answer", request.getParameterValues("delete_answers"));
-			request.setAttribute("Delete_questions_id", request.getParameter("delete_questions_id"));
-			request.setAttribute("Delete_answer_id", request.getParameterValues("delete_answers_id"));
-			request.getRequestDispatcher("./Delete").forward(request, response);
-			return;
+		if(pram.equals("1"))
+		{
+			request.getRequestDispatcher("./History_Connection").forward(request, response);
+			
 		}
-		System.out.println("no");
-		//noだったらList.jspに移動する
-		request.getRequestDispatcher("./List_Connection").forward(request, response);
 	}
-}
 
+}

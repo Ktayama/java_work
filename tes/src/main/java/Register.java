@@ -154,7 +154,7 @@ public class Register extends HttpServlet {
 		//input_register.setAnswer_text(answer_text);
 		
 		//List.javaに飛ばす
-		RequestDispatcher dispacher = request.getRequestDispatcher("./List");
+		RequestDispatcher dispacher = request.getRequestDispatcher("./List_Connection");
 		dispacher.forward(request, response);
 		}catch (Exception e) {
 			// TODO 自動生成された catch ブロック

@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import tes.DAOException;
 import tes.UsersBean;
@@ -47,6 +48,9 @@ public class Login extends HttpServlet {
 		String userId = request.getParameter("user_id");
 		//login.jspでinputに入力した値をgetParameterで取得してString passwordに代入している
 		String password = request.getParameter("password");
+		
+		HttpSession session =request.getSession();
+		
 		//実行結果で入力した値がコンソールに表示される
 		System.out.println(userId);
 		System.out.println(password);
@@ -76,6 +80,7 @@ public class Login extends HttpServlet {
 			//入力値のidとパスワードをusersのデータベースの値と一致しているか判定
 		    if((Integer.parseInt(userId))==bean.getId()&&password.equals(bean.getPassword()))
 			{
+		    	session.setAttribute("Login_id", userId);
 				//一致した場合はtopjspに行く
 			    //idとpassが一致した場合
 				RequestDispatcher dispacher = request.getRequestDispatcher("./top.jsp");

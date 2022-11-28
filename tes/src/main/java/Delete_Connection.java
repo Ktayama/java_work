@@ -1,28 +1,30 @@
 
 
 import java.io.IOException;
+import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import tes.Correct_answersBean;
 import tes.Correct_answersDao;
+import tes.QuestionsBean;
 import tes.QuestionsDao;
 
 /**
- * Servlet implementation class Delete
+ * Servlet implementation class Delete_item
  */
-@WebServlet("/Delete")
-public class Delete extends HttpServlet {
+@WebServlet("/Delete_Connection")
+public class Delete_Connection extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Delete() {
+    public Delete_Connection() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,7 +34,7 @@ public class Delete extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		doPost(request, response);
 	}
 
 	/**
@@ -41,29 +43,31 @@ public class Delete extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String[] delete_answers =  (String[])request.getAttribute("Delete_answer");
-		String[] delete_answers_id =  (String[])request.getAttribute("Delete_answer_id");
-		String delete_questions =  (String)request.getAttribute("Delete_questions");
-		String delete_questions_id =  (String)request.getAttribute("Delete_questions_id");
+		String questions_id = (String)request.getAttribute("Questions_id");
 		
-	try {
+		QuestionsDao Dao;
 		
-		QuestionsDao dao = new QuestionsDao();
-		Correct_answersDao dao_an = new Correct_answersDao();
-		
-		dao.DELETE(Integer.parseInt(delete_questions_id));
-		for(int i=0; i < delete_answers_id.length; i++)
-		{
-			dao_an.DELETE(Integer.parseInt(delete_answers_id[i]));
+		try {
+			Dao =new QuestionsDao();
+			
+			QuestionsBean Bean = Dao.find(Integer.parseInt(questions_id));
+			
+			Correct_answersDao correct_anDao = new Correct_answersDao();
+			
+			ArrayList<Correct_answersBean> list_answer = correct_anDao.findByQuestionsId(Integer.parseInt(questions_id));
+			
+			request.setAttribute("Questions_list", Bean);
+			request.setAttribute("Answers_list",list_answer);
+			
+			//Edit.jspに移動
+			request.getRequestDispatcher("./Delete_Confirm.jsp").forward(request, response);
+			
+			
+		}catch(Exception e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
 		}
 		
-		RequestDispatcher dispacher = request.getRequestDispatcher("./List_Connection");
-		dispacher.forward(request, response);
-		
-	} catch (Exception e1) {
-	// TODO 自動生成された catch ブロック
-	e1.printStackTrace();
-}
 	}
 
 }

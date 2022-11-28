@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Edit_Confirm_item
  */
-@WebServlet("/Edit_Confirm_item")
+@WebServlet("/Edit_item")
 public class Edit_item extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -58,14 +58,14 @@ public class Edit_item extends HttpServlet {
 			request.setAttribute("Answer[]",answer);
 			request.setAttribute("Questions_id",request.getParameter("questions_id"));
 			request.setAttribute("Answer_id[]",answer_id);
-			System.out.println("ok");
+			
 			//okだったらEdit_Listに移動する
 			request.getRequestDispatcher("./Edit_List").forward(request, response);
 			return;
 		}
-		System.out.println("no");
+		
 		//noだったらList.jspに移動する
-		request.getRequestDispatcher("./List.jsp").forward(request, response);
+		request.getRequestDispatcher("./List_Connection").forward(request, response);
 	}
 
 }
