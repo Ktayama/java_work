@@ -1,25 +1,29 @@
 
 
-import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
+import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import tes.UsersBean;
+import tes.UsersDao;
+
 /**
- * Servlet implementation class ItemList
+ * Servlet implementation class UserConnection
  */
-@WebServlet("/ItemList")
-public class ItemList extends HttpServlet {
+@WebServlet("/UserConnection")
+public class UserConnection extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ItemList() {
+    public UserConnection() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,15 +42,22 @@ public class ItemList extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String pram = request.getParameter("pram");
 		
-		if(pram.equals("top")) {
+		try {
 			
-			RequestDispatcher dispacher = request.getRequestDispatcher("./top.jsp");
-			dispacher.forward(request, response);
-		}else if(pram.equals("logout")) {
+			UsersDao usersdao= new UsersDao();
+		
 			
-			request.getRequestDispatcher("./login.jsp").forward(request, response);
+			ArrayList<UsersBean> list = usersdao.findAll();
+			
+			
+			request.setAttribute("UsersList",list);
+		
+			request.getRequestDispatcher("./userLists.jsp").forward(request, response);
+			
+		} catch (Exception e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
 		}
 	}
 
