@@ -11,7 +11,7 @@
 
 <link rel="stylesheet" href="wrap.css">
 <link rel="stylesheet" href="alertarea.css">
-
+<script src="userReisterConfirm.js"></script>
 
 <body>
 <!-- java.util.ArrayLisクラスをインポートする -->
@@ -19,33 +19,28 @@
 <!-- tes.QuestionBeanクラスをインポートする -->
 <%@ page import="tes.UsersBean"%>
 
-
-<form onSubmit="returnCheck()"action="UserRegisterItem" method="post">
-	<p>
-	<label for="userName">ユーザ名</label>
+<form action="UserRegisterItem" method="post" name="form">
+<p>
+	ユーザー名                             
+	<input type="text" name="userName"required placeholder="ユーザー名(半角英数字のみ)" >
 	</p>
 	<p>
-	<input type="text" name="userName"id="userName"required placeholder="ユーザー名(半角英数字のみ)" >
-	<p>
-	<label for="usersPass">PW</label>
+	PW                                       
+	<input type="password"name="usersPass">
 	</p>
 	<p>
-	<input type="password"name="usersPass"id="usersPass" required>
-	</p>
-	<p>
-	<label for="userPassCheck">PW再確認</label>
-	</p>
-	<p>
-	<input type="password"name="userPassCheck"id="userPassCheck" required>
+	PW再確認
+	<input type="password"name="userPassCheck">
 	</p>
 	<p>
 	管理者
-	<input type="checkbox"name="admin_flag"id="admin_flag"value="1">
+	<input type="checkbox"name="admin_flag"value="1">
 	</p>
-	<input type="submit"id="submit">
+	<input type="submit" value="確認" onClick="return false;">
 	
+	<input type="submit"value="戻る">
 </form>
-<script src="userReisterConfirm.js"></script>
+
 </body>
 </html>
 
