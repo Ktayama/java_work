@@ -6,13 +6,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<script src="userReisterConfirm.js"></script>
+
 
 
 <link rel="stylesheet" href="wrap.css">
 <link rel="stylesheet" href="alertarea.css">
 
-<script src="Delete_Insert_items.js"></script>
 
 <body>
 <!-- java.util.ArrayLisクラスをインポートする -->
@@ -20,30 +19,33 @@
 <!-- tes.QuestionBeanクラスをインポートする -->
 <%@ page import="tes.UsersBean"%>
 
-<form class="checkform" name="formCheck"action="UserRegisterItem" method="post">
+
+<form onSubmit="returnCheck()"action="UserRegisterItem" method="post">
 	<p>
-	ユーザー名                             
-	<input type="text"class="alpha" name="userName"required placeholder="ユーザー名(半角英数字のみ)" >
-	<span class="alertarea"></span>
+	<label for="userName">ユーザ名</label>
 	</p>
 	<p>
-	PW                                       
-	<input type="password"class="chars8"name="usersPass">
-	<span class="alertarea"></span>
+	<input type="text" name="userName"id="userName"required placeholder="ユーザー名(半角英数字のみ)" >
+	<p>
+	<label for="usersPass">PW</label>
 	</p>
 	<p>
-	PW再確認
-	<input type="password" id="userPassCheck"class="chars8"name="userPassCheck">
-	<span class="alertarea"></span>
+	<input type="password"name="usersPass"id="usersPass" required>
+	</p>
+	<p>
+	<label for="userPassCheck">PW再確認</label>
+	</p>
+	<p>
+	<input type="password"name="userPassCheck"id="userPassCheck" required>
 	</p>
 	<p>
 	管理者
-	<input type="checkbox"name="admin_flag"value="1">
+	<input type="checkbox"name="admin_flag"id="admin_flag"value="1">
 	</p>
-	<input type="submit"value="確認"onclick="myCheck">
+	<input type="submit"id="submit">
 	
-	<input type="submit"value="戻る">
 </form>
+<script src="userReisterConfirm.js"></script>
 </body>
 </html>
 
