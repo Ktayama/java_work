@@ -9,16 +9,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class UserRegisterItem
+ * Servlet implementation class UserRegisterConfirmItem
  */
-@WebServlet("/UserRegisterItem")
-public class UserRegisterItem extends HttpServlet {
+@WebServlet("/UserRegisterConfirmItem")
+public class UserRegisterConfirmItem extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserRegisterItem() {
+    public UserRegisterConfirmItem() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,24 +36,29 @@ public class UserRegisterItem extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+	request.setCharacterEncoding("UTF-8");
 		
-		String userName = (String)request.getParameter("userName");
-		String userPass = (String)request.getParameter("userPass");
-		String userPassCheck = (String)request.getParameter("userPassCheck");
-		String adminFlag =(String)request.getParameter("admin_flag");
-		if (adminFlag == null) {
-		    adminFlag = "0";
-		}else {
-			 adminFlag = "1";
-		}
-		byte adminFlagByte = Byte.parseByte(adminFlag);
+	String prm_confirm= request.getParameter("prm_confirm");
+	
+	if(prm_confirm.equals("登録")) 
+	{
 		
-		request.setAttribute("UserName", userName);
-		request.setAttribute("UserPass", userPass);
-		request.setAttribute("UserPassCheck", userPassCheck);
-		request.setAttribute("AdminFlagByte", adminFlagByte);
+		String userName = request.getParameter("userName");
+		request.setAttribute("UserName",userName);
 		
-		request.getRequestDispatcher("./userRegisterConfirm.jsp").forward(request, response);
+		request.setAttribute("UserPass",request.getParameter("userPass"));
+		
+		request.setAttribute("AdminFlag",request.getParameter("adminFlag"));
+		
+		System.out.println(request.getParameter("userName"));
+		System.out.println(request.getParameter("userPass"));
+		System.out.println(request.getParameter("adminFlag"));
+		
+		request.getRequestDispatcher("./UserRegister").forward(request, response);
+		return;
+	}
+	request.getRequestDispatcher("./UserConncetin.java").forward(request, response);
 	}
 
 }
+
