@@ -15,8 +15,8 @@ function DeleteCheck() {
 		return false;
 	} else if (!form.userPassDeleteCheck.value.match(/^([a-zA-Z0-9]{8,})$/)) {
 		alert("パスワードは半角英数字で8文字以上に設定してください");
-		return false;
-	} else if (form.userDeletePass.value == form.userPassDeleteCheck.value !=userPassCheckAnswer){
+		return false
+	} else if ((form.userDeletePass.value == form.userPassDeleteCheck.value) && (form.userDeletePass.value !=form.userPassCheckAnswer.value)){
       alert("パスワードと確認用パスワードが一致しません"); // 一致していなかったら、エラーメッセージを表示する
       return false;
 	} else {

@@ -42,7 +42,7 @@ PW再確認
     <input type="text"name="admin_flag"readonly="readonly"value=なし>
 <% }%>
 </p>
-<input type="submit"value="削除"onClick="return DeleteCheck">
+<input type="submit"value="削除"onClick="return DeleteCheck();">
 
 <input type="submit"name="pram_delete"value="戻る">
 

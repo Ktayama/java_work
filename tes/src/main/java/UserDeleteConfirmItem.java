@@ -40,7 +40,6 @@ public class UserDeleteConfirmItem extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		String userId = (String)request.getParameter("userId");
-	
 		
 		request.setAttribute("UserId", userId);
 	
