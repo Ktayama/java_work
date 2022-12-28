@@ -45,7 +45,7 @@ public class UserDelete extends HttpServlet {
 		
 		UsersDao userDao = new UsersDao();
 		
-		if(UserId ==null) {
+		if(UserId != null) {
 		userDao.DeleteserUpdata(Integer.parseInt(UserId));
 		}
 		
