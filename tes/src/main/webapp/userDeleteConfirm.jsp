@@ -24,16 +24,7 @@
 ユーザー名
 <input type="text"name="userName"readonly="readonly"value="<%=userBean.getName() %>">
 </p>
-<p>
-PW
-<input type="password"name="userDeletePass" >
-</p>
-<p>
-PW再確認
-<input type="password"name="userPassDeleteCheck">
-</p>
-<!-- 正解用(非表示) -->
-<input type="hidden"name="userPassCheckAnswer"value="<%=userBean.getPassword() %>">
+
 <p>
 管理者
 <% if (userBean.getAdminflag() == 1) { %>
