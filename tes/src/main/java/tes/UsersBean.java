@@ -24,6 +24,7 @@ public class UsersBean {
 		this.id = id;
 		this.name = name;
 		this.password = password;
+		this.admin_flag = admin_flag;
 	}
 	
 	/** 引数無しのコンストラクタ **/

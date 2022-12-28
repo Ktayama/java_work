@@ -9,13 +9,13 @@
 <title>Insert title here</title>
 </head>
 <link rel="stylesheet" href="wrap.css">
-<script src="UserEditCheck.js"></script>
+<script src="UserDeleteCheck.js"></script>
 <body>
 
 <%UsersBean userBean = (UsersBean)request.getAttribute("UsersBean"); %>
 
 
-<form action="UserEditItem"method="post"name="form">
+<form action="UserDeleteConfirmItem"method="post"name="form">
 <p>
 番号
 <input type="text"name="userId"readonly="readonly"value=<%=userBean.getId()%>>
@@ -26,24 +26,27 @@
 </p>
 <p>
 PW
-<input type="password"name="userPass" value="<%=userBean.getPassword() %>">
+<input type="password"name="userDeletePass" >
 </p>
 <p>
 PW再確認
-<input type="password" name="userPassCheck"value="<%=userBean.getPassword()%>">
+<input type="password"name="userPassDeleteCheck">
 </p>
+<!-- 正解用(非表示) -->
+<input type="hidden"name="userPassCheckAnswer"value="<%=userBean.getPassword() %>">
 <p>
 管理者
 <% if (userBean.getAdminflag() == 1) { %>
-<input type="checkbox"name="admin_flag"value=<%=userBean.getAdminflag() %> checked="checked">
+<input type="text"name="admin_flag"readonly="readonly"value=あり >
 <% } else { %>
-    <input type="checkbox"name="admin_flag"value=<%=userBean.getAdminflag()%>>
+    <input type="text"name="admin_flag"readonly="readonly"value=なし>
 <% }%>
 </p>
-<input type="submit"value="確認"onClick="return EditCheck();">
+<input type="submit"value="削除"onClick="return DeleteCheck">
 
-<input type="submit"value="戻る">
+<input type="submit"name="pram_delete"value="戻る">
 
 </form>
 </body>
 </html>
+

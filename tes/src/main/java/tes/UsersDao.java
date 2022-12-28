@@ -177,7 +177,7 @@ public class UsersDao extends ConnectionDao {
 		//sql実行結果の格納用
 		ResultSet rs = null;
 		try {
-			String sql = "Insert INTO users (password,name,admin_flag,deleteflag,created_at, updated_at)values(?,?,?,0,current_timestamp(),current_timestamp());";
+			String sql = "Insert INTO users (password,name,admin_flag,delete_flag,created_at)values(?,?,?,0,current_timestamp());";
 			
 			st = con.prepareStatement(sql);
 		
@@ -185,7 +185,7 @@ public class UsersDao extends ConnectionDao {
 			st.setString(2, name);
 			st.setByte(3, adminFlag);
 			/** SQL 実行 **/
-			rs = st.executeQuery();
+			st.executeUpdate();
 			return ;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -195,7 +195,7 @@ public class UsersDao extends ConnectionDao {
 				//sqlの実行結果をclose
 				if (rs != null){
 						rs.close();
-				}				
+				}
 				if (st != null) {
 						st.close();
 				}//ConnectionDaoのcloseを呼び出している
@@ -219,7 +219,7 @@ public class UsersDao extends ConnectionDao {
 		//sql実行結果の格納用
 		ResultSet rs = null;
 		try {
-			String sql = "update users set password=?,admin_flag=?,updated_at=current_timestamp()  where id=?";
+			String sql = "update users set password=?,admin_flag=?  where id=?";
 			
 			st = con.prepareStatement(sql);
 		
