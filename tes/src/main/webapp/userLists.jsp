@@ -50,13 +50,17 @@
 			
 			<input type="hidden" name="parem"value="2">
 			
+			<input type="hidden" name="user_id" value="<%=usersBean.getId()%>">
+			
 			<input type="submit" value="編集" >
 		</form>
 		
 		
 		<form action="./UserItem" method="post">
 			
-			<input type="hidden" name="parem"value="2">
+			<input type="hidden" name="parem"value="3">
+			
+			<input type="hidden" name="user_id" value="<%=usersBean.getId()%>">
 			
 			<input type="submit"  value="削除" >
 			
