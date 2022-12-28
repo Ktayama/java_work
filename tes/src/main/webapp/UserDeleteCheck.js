@@ -4,7 +4,7 @@ function DeleteCheck() {
 	var userPassDeleteCheck = document.form.userPassDeleteCheck.value;
 	var userPassCheckAnswer = document.form.userPassCheckAnswer.value;
 	
-	if (form.userDeletePass.value == "") {
+	if (userDeletePass == "") {
 		alert("パスワードを入力してください");//エラーメッセージを出力
 		return false; //送信ボタン本来の動作をキャンセルします
 	} else if (!form.userDeletePass.value.match(/^([a-zA-Z0-9]{8,})$/)) {
