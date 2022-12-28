@@ -1,9 +1,6 @@
 function DeleteCheck() {
 	
-	var userDeletePass = document.form.userDeletePass.value;
-	var userPassDeleteCheck = document.form.userPassDeleteCheck.value;
-	var userPassCheckAnswer = document.form.userPassCheckAnswer.value;
-	
+
 	if (userDeletePass == "") {
 		alert("パスワードを入力してください");//エラーメッセージを出力
 		return false; //送信ボタン本来の動作をキャンセルします
