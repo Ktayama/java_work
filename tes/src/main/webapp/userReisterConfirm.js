@@ -1,10 +1,10 @@
 
 
 function check() {
-	var userName = document.getElementById("name").value; //メールフォームの値を取得
-    var usersPass = document.getElementById("usersPass").value; //メール確認用フォームの値を取得
-    var userPassCheck = document.getElementById("userPassCheck").value; //メール確認用フォームの値を取得
-    
+	var userName = form.userName.value;
+	var userPass = form.userPass.value;
+	var userPassCheck = form.userPassCheck.value;
+	
 	if (form.userName.value == "") {
 		//条件に一致する場合
 		alert("名前を入力してください"); //エラーメッセージを出力

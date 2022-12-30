@@ -1,8 +1,6 @@
 
 
-
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,20 +8,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import tes.UsersBean;
-import tes.UsersDao;
-
 /**
- * Servlet implementation class UserConnection
+ * Servlet implementation class UserItem
  */
-@WebServlet("/UserConnection")
-public class UserConnection extends HttpServlet {
+@WebServlet("/UserItem")
+public class UserItem extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserConnection() {
+    public UserItem() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -42,23 +37,21 @@ public class UserConnection extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		//userList.jspでhiddenで指定したパラメーターをgetParameterでString paramに格納
+		String parem = request.getParameter("parem");
 		
-		try {
-			//UsersDaoをインスタンス化
-			UsersDao usersdao= new UsersDao();
-		
-			//ArrayList(配列)としてUsersBean型のlistを作り、そこにusersdaoオブジェクト(UsersDaoクラス)が持つfindAllメソッドを実行した戻り値を格納
-			ArrayList<UsersBean> list = usersdao.findAll();
-			
-			//パラメーター名UsersListとしてUserの一覧を設定
-			request.setAttribute("UsersList",list);
-			//userLists.jspに移動
-			request.getRequestDispatcher("./userLists.jsp").forward(request, response);
-			
-		} catch (Exception e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
+		//hiddenで指定の値が押された時equalsで文字列比較を行う
+		if(parem.equals("1")) {
+			//UsersRegisterの内容に出したい処理
+			request.getRequestDispatcher("./UsersRegister.jsp").forward(request, response);
+		}else if(parem.equals("2")) {
+			//編集処理画面に移動[UserEditConncetionサーブレット]
+			request.getRequestDispatcher("./UserEditConncetion").forward(request, response);
+		}else if(parem.equals("3")) {
+			//削除処理画面に移動[UserDeleteConnectionサーブレット]
+			request.getRequestDispatcher("./UserDeleteConnection").forward(request, response);
 		}
+		
 	}
 
 }
