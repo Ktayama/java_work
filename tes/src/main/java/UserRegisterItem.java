@@ -44,10 +44,10 @@ public class UserRegisterItem extends HttpServlet {
 		String adminFlag =(String)request.getParameter("admin_flag");
 		//adminFlagがnullの場合
 		if (adminFlag == null) {
-			//adminFlagが0だったら場合
+			//adminFlagに0の文字列を設定
 		    adminFlag = "0";
 		}else {
-			//adminFlagが1だった場合
+			//adminFlagに1の文字列を設定
 			 adminFlag = "1";
 		}
 		//byte型のadminFlagByte変数を用意して、byte型に変換したadminFlag設定してadminFlagByteに格納

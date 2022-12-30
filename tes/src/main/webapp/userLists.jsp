@@ -47,7 +47,7 @@
 		<!-- usersBean変数のuseridの値を表示させる -->
 		<p><font size="4">ID:<%=usersBean.getId()%></font></p>
 		
-		<!-- usersBean変数のadminflagの値が0なら一般1なら管理者を表示させる -->
+		<!-- usersBean変数のadminflagの値が1なら管理者、それ以外は一般を表示させる -->
 		<% if(usersBean.getAdminflag()==1){%>
 		<font size="3">管理者:</font> 
 		 <%}else{%>

@@ -44,11 +44,10 @@ public class UserRegisterConfirmItem extends HttpServlet {
 	//equalsで登録の文字列比較を行う
 	if(prm_confirm.equals("登録")) 
 	{
-		//userRegisterConfirm.jspでinputに入力された値をgetParameterとして取得する。それを、userNameに格納
-		String userName = request.getParameter("userName");
+		
 		
 		//各々パラメータをセットさせる
-		request.setAttribute("UserName",userName);
+		request.setAttribute("UserName",request.getParameter("userName"));
 		request.setAttribute("UserPass",request.getParameter("userPass"));
 		request.setAttribute("AdminFlag",request.getParameter("adminFlag"));
 		

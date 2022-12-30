@@ -48,10 +48,10 @@ public class UserRegister extends HttpServlet {
 		System.out.println(adminFlag);
 		//adminFlagが「あり」の場合
 		if(adminFlag.equals("あり")) {
-			//adminFlagを0と表示
+			//adminFlagに１の文字列を設定
 			adminFlag ="1";
 		}else {
-			//adminFlagを1と表示
+			//adminFlagに0の文字列を設定
 			adminFlag ="0";
 		}
 		//byte型のadminFlagByte変数を用意して、byte型に変換したadminFlag設定してadminFlagByteに格納
