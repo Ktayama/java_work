@@ -44,15 +44,15 @@ public class UserConnection extends HttpServlet {
 		
 		
 		try {
-			
+			//UsersDaoをインスタンス化
 			UsersDao usersdao= new UsersDao();
 		
-			
+			//ArrayList(配列)としてUsersBean型のlistを作り、そこにusersdaoオブジェクト(UsersDaoクラス)が持つfindAllメソッドを実行した戻り値を格納
 			ArrayList<UsersBean> list = usersdao.findAll();
 			
-			
+			//パラメーター名UsersListとしてUserの一覧を設定
 			request.setAttribute("UsersList",list);
-		
+			//userLists.jspに移動
 			request.getRequestDispatcher("./userLists.jsp").forward(request, response);
 			
 		} catch (Exception e) {

@@ -36,13 +36,19 @@ public class UserItem extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		//userList.jspでhiddenで指定したパラメーターをgetParameterでString paramに格納
 		String parem = request.getParameter("parem");
 		
+		//hiddenで指定の値が押された時equalsで文字列比較を行う
 		if(parem.equals("1")) {
+			//UsersRegisterの内容に出したい処理
 			request.getRequestDispatcher("./UsersRegister.jsp").forward(request, response);
 		}else if(parem.equals("2")) {
+			//編集処理画面に移動[UserEditConncetionサーブレット]
 			request.getRequestDispatcher("./UserEditConncetion").forward(request, response);
 		}else if(parem.equals("3")) {
+			//削除処理画面に移動[UserDeleteConnectionサーブレット]
 			request.getRequestDispatcher("./UserDeleteConnection").forward(request, response);
 		}
 		
