@@ -39,17 +39,21 @@ public class UserDelete extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		//userDeleteConfirm.jspでsubmit指定したパラメーターをgetParameterでuserIdに格納
 		String UserId =  (String)request.getAttribute("UserId");
 		
 	try {
 		
+		//UsersDaoのインスタンス化
 		UsersDao userDao = new UsersDao();
 		
-		
+		//UserIdがnullの場合
 		if(UserId != null) {
+		//usersDaoのDeleteserUpdataメソットを呼び出して、int型のidををセットさせる
 		userDao.DeleteserUpdata(Integer.parseInt(UserId));
 		}
-		
+		//UserConnectionに遷移
 		RequestDispatcher dispacher = request.getRequestDispatcher("./UserConnection");
 		dispacher.forward(request, response);
 		

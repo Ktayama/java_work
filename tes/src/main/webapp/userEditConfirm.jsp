@@ -6,6 +6,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<link rel="stylesheet" href="common.css">
+<link rel="stylesheet" href="answerList.css">
+<link rel="stylesheet" href="common_center.css">
+<link rel="stylesheet" href="questions_border.css">
+<link rel="stylesheet" href="wrap.css">
 <body>
 <%String userId =(String)request.getAttribute("UserId"); %>
 <%String userName=(String)request.getAttribute("UserName");%>
@@ -15,29 +21,40 @@
 
 
 <form action="UserEditConfirmItem" method="post">
+<script src="item.js"></script>
+   <p></p>
+<div class="boxwrap">
 	<p>
 	ID
-	<input type="text"name="userId"readonly="readonly"value="<%=userId%>">
+	<!--IDをtextで入力欄を作成し中にUsersEditで入力された値を表示  -->
+	<input type="text"name="userId"class="boxA"readonly="readonly"value="<%=userId%>">
 	</p>
 	<p>
 	ユーザ名
-	<input type="text"name="userName"readonly="readonly"value="<%=userName%>">
+	<!--ユーザ名をtextで入力欄を作成し中にUsersEditで入力された値を表示  -->
+	<input type="text"name="userName"class="boxA"readonly="readonly"value="<%=userName%>">
 	</p>
 	<p>
 	PW
-	<input type="password"name="userPass"readonly="readonly"value="<%=userPass%>">
+	<!--パスワード入力欄を作成し中にUsersEditで入力された値を表示  -->
+	<input type="password"name="userPass"class="boxA"readonly="readonly"value="<%=userPass%>">
 	</p>
 	<p>
 	PW確認
-	<input type="password"name="userPassCheck"readonly="readonly"value="<%=userPassCheck%>">
+	<!--パスワードの確認用に入力欄を作成し中にUsersEditで入力された値を表示  -->
+	<input type="password"name="userPassCheck"class="boxA"readonly="readonly"value="<%=userPassCheck%>">
 	</p>
 	<p>
-	管理者<input type="text"name="adminFlag"readonly="readonly"value="<%if(adminFlag ==1) {%>あり<%}else{%>なし<% }%>">
+	<!-- UsersRegister.jspでcheckされた値を「あり」か「なし」で表示 -->
+	管理者<input type="text"name="adminFlag"class="boxA"readonly="readonly"value="<%if(adminFlag ==1) {%>あり<%}else{%>なし<% }%>">
 	</p>
-	<input type="submit"name="prm_edit_confirm"value="更新">
+	</div>
+<div class="center">
+	<!-- type="submit"では送信ボタンとしての機能-->
+	<p><button type="submit"name="prm_edit_confirm"value="更新">更新</button></p>
 	
-	<input type="submit"name="prm_edit_confirm"value="戻る">
-	
+	<button type="submit"name="prm_edit_confirm"value="戻る">戻る</button>
+</div>	
 </form>
 </body>
 </html>

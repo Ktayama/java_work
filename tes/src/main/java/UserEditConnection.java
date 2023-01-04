@@ -39,17 +39,30 @@ public class UserEditConnection extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		//usersList.jspで指定したパラメータをgetParameterでString user_idに格納
 		String user_id = (String)request.getParameter("user_id");
+		
+		//user_idがnullだった場合
+		if(user_id==null)
+		{
+			//UserEditConfirmItemで指定したパラメータをgetAttributeでuser_idに格納
+			user_id = (String)request.getAttribute("user_id");
+		}
+		System.out.println(user_id);
 		
 		UsersDao usersDao;
 		try {
-			//QuestionsDaoに入ってるのが使える
+			//UsersDaoをインスタンス化
 			 usersDao = new UsersDao();
 			 
+			 //UsersBean型のBean変数を用意して、userDao変数のfindメソッドの引数をint型のuserIdに設定して、実行結果をBeanに格納
 			 UsersBean bean = usersDao.find(Integer.parseInt(user_id));
 			 
+			 //JSPに渡す情報を設定する。第一引数にUsersBeanとする文字列、第二引数にBeanを設定する
 			 request.setAttribute("UsersBean",bean);
 			 
+			 //userEdit.jspに遷移
 			 request.getRequestDispatcher("./userEdit.jsp").forward(request, response);
 			 
 		} catch (Exception e) {
