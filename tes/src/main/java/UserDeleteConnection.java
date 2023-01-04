@@ -43,13 +43,17 @@ public class UserDeleteConnection extends HttpServlet {
 		
 		UsersDao usersDao;
 		try {
-			//QuestionsDaoに入ってるのが使える
+			
+			//usersDaoに入ってるのが使える
 			 usersDao = new UsersDao();
 			 
+			 //UsersBean型のBean変数を用意して、userDao変数のfindメソッドの引数をint型のuserIdに設定して、実行結果をBeanに格納
 			 UsersBean bean = usersDao.find(Integer.parseInt(user_id));
 			 
+			 //JSPに渡す情報を設定する。第一引数にUsersBeanとする文字列、第二引数にBeanを設定する
 			 request.setAttribute("UsersBean",bean);
 			 
+			//userDeleteConfirm.jspに遷移
 			 request.getRequestDispatcher("./userDeleteConfirm.jsp").forward(request, response);
 			 
 		} catch (Exception e) {

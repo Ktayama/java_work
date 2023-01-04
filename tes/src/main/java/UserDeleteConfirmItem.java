@@ -39,11 +39,15 @@ public class UserDeleteConfirmItem extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		
+		
+		//userDeleteConfirm.jspで指定したidのパラメーターをgetParameterでuserIdに格納
 		String userId = (String)request.getParameter("userId");
 		
+		//パラメーターをuserIdに設定する
 		request.setAttribute("UserId", userId);
 	
 		
+		//UserDeleteに移動
 		request.getRequestDispatcher("./UserDelete").forward(request, response);
 		return;
 	

@@ -3,40 +3,61 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- java.util.ArrayLisクラスをインポートする -->
 <%@ page import="java.util.ArrayList"%>
+<!-- tes.UsersBeanクラスをインポートする -->
 <%@ page import="tes.UsersBean"%>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<link rel="stylesheet" href="common.css">
+<link rel="stylesheet" href="answerList.css">
+<link rel="stylesheet" href="common_center.css">
+<link rel="stylesheet" href="questions_border.css">
 <link rel="stylesheet" href="wrap.css">
-<script src="UserDeleteCheck.js"></script>
+
 <body>
 
 <%UsersBean userBean = (UsersBean)request.getAttribute("UsersBean"); %>
 
-
-<form action="UserDeleteConfirmItem"method="post"name="form">
+<script src="item.js"></script>
+   <p></p>
+<form action="UserDelete"method="post">
+<div class="boxwrap">
 <p>
 番号
-<input type="text"name="userId"readonly="readonly"value=<%=userBean.getId()%>>
+<!--番号をtextで入力欄を作成し中にUsersBean変数のidの値を表示させる -->
+<input type="text"name="userId"class="boxA"readonly="readonly"value=<%=userBean.getId()%>>
 </p>
 <p>
 ユーザー名
-<input type="text"name="userName"readonly="readonly"value="<%=userBean.getName() %>">
+<!--ユーザ名をtextで入力欄を作成し中にUsersBean変数のnameの値を表示させる  -->
+<input type="text"name="userName"class="boxA"readonly="readonly"value="<%=userBean.getName() %>">
 </p>
 
 <p>
 管理者
+<!-- UsersList.jspでcheckされた値を1なら「あり」それ以外は「なし」で表示 -->
 <% if (userBean.getAdminflag() == 1) { %>
-<input type="text"name="admin_flag"readonly="readonly"value=あり >
+<input type="text"name="admin_flag"class="boxA"readonly="readonly"value=あり >
 <% } else { %>
-    <input type="text"name="admin_flag"readonly="readonly"value=なし>
+    <input type="text"name="admin_flag"class="boxA"readonly="readonly"value=なし>
 <% }%>
 </p>
-<input type="submit"value="削除"onClick="return DeleteCheck();">
+</div>
+<div class="center">
+<!-- type="submit"では送信ボタンとしての機能、onClick="return DeleteCheck()"でUserDeleteCheck.jsで行った処理が実行される-->
+<button type="submit">削除</button>
 
-<input type="submit"name="pram_delete"value="戻る">
+</div>
+</form>
+<form action="UserConnection"method="post">
+<div class="center">
+<!-- type="submit"では送信ボタンとしての機能-->
+<button type="submit"name="pram_delete">戻る</button>
 
+</div>
 </form>
 </body>
 </html>

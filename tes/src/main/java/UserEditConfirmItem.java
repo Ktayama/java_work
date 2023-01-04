@@ -38,29 +38,32 @@ public class UserEditConfirmItem extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		
+		//userEditConfirm.jspでhiddenで指定したパラメーターをgetParameterでprm_edit_confirmに格納
 		String prm_edit_confirm= request.getParameter("prm_edit_confirm");
 		
+		//equalsで更新の文字列比較を行う
 		if(prm_edit_confirm.equals("更新")) 
 		{
 			
-			
-			String userName = request.getParameter("userName");
-			request.setAttribute("UserName",userName);
-			
+			//各々パラメータをセットさせる
+			request.setAttribute("UserName",request.getParameter("userName"));
 			request.setAttribute("UserId",request.getParameter("userId"));
-			
 			request.setAttribute("UserPass",request.getParameter("userPass"));
-			
 			request.setAttribute("AdminFlag",request.getParameter("adminFlag"));
 			
-			System.out.println(request.getParameter("userName"));
-			System.out.println(request.getParameter("userId"));
-			System.out.println(request.getParameter("userPass"));
-			System.out.println(request.getParameter("adminFlag"));
-			
+			//UserEditに移動
 			request.getRequestDispatcher("./UserEdit").forward(request, response);
-			return;
+			
+		//equalsで更新の文字列比較を行う
+		}else if(prm_edit_confirm.equals("戻る")) {
+		
+		
+		//パラメータをuser_idに設定させる
+		request.setAttribute("user_id",request.getParameter("userId"));
+		System.out.println(request.getParameter("user_id"));
+		
+		//UserConnectionに戻る処理
+		request.getRequestDispatcher("./UserEditConncetion").forward(request, response);
 		}
-		request.getRequestDispatcher("./UserConncetin.java").forward(request, response);
 	}
 }
