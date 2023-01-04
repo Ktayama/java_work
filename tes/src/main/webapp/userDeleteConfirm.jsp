@@ -16,14 +16,14 @@
 <link rel="stylesheet" href="common_center.css">
 <link rel="stylesheet" href="questions_border.css">
 <link rel="stylesheet" href="wrap.css">
-<script src="UserDeleteCheck.js"></script>
+
 <body>
 
 <%UsersBean userBean = (UsersBean)request.getAttribute("UsersBean"); %>
 
 <script src="item.js"></script>
    <p></p>
-<form action="UserDeleteConfirmItem"method="post"name="form">
+<form action="UserDelete"method="post">
 <div class="boxwrap">
 <p>
 番号
@@ -48,7 +48,7 @@
 </div>
 <div class="center">
 <!-- type="submit"では送信ボタンとしての機能、onClick="return DeleteCheck()"でUserDeleteCheck.jsで行った処理が実行される-->
-<button type="submit"onClick="return DeleteCheck();">削除</button>
+<button type="submit">削除</button>
 
 </div>
 </form>

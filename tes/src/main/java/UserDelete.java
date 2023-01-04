@@ -41,14 +41,14 @@ public class UserDelete extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		//userDeleteConfirm.jspでsubmit指定したパラメーターをgetParameterでuserIdに格納
-		String UserId =  (String)request.getAttribute("UserId");
+		String UserId =  (String)request.getParameter("userId");
 		
 	try {
 		
 		//UsersDaoのインスタンス化
 		UsersDao userDao = new UsersDao();
 		
-		//UserIdがnullの場合
+		//UserIdがnullではなかった場合
 		if(UserId != null) {
 		//usersDaoのDeleteserUpdataメソットを呼び出して、int型のidををセットさせる
 		userDao.DeleteserUpdata(Integer.parseInt(UserId));

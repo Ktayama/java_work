@@ -44,7 +44,7 @@ public class UserDeleteConnection extends HttpServlet {
 		UsersDao usersDao;
 		try {
 			
-			//QuestionsDaoに入ってるのが使える
+			//usersDaoに入ってるのが使える
 			 usersDao = new UsersDao();
 			 
 			 //UsersBean型のBean変数を用意して、userDao変数のfindメソッドの引数をint型のuserIdに設定して、実行結果をBeanに格納
