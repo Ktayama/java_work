@@ -20,7 +20,7 @@
 <%byte adminFlag =(byte)request.getAttribute("AdminFlagByte");%>
 
 
-<form action="UserEditConfirmItem" method="post">
+<form action="UserEdit" method="post">
 <script src="item.js"></script>
    <p></p>
 <div class="boxwrap">
@@ -53,8 +53,14 @@
 	<!-- type="submit"では送信ボタンとしての機能-->
 	<p><button type="submit"name="prm_edit_confirm"value="更新">更新</button></p>
 	
-	<button type="submit"name="prm_edit_confirm"value="戻る">戻る</button>
+	
 </div>	
+</form>
+<form action="UserEditConncetion" method="post">
+	<div class="center">
+	<button type="submit"name="prm_edit_confirm"value="戻る">戻る</button>
+	<input type="hidden"name="user_id"value="<%=userId%>">
+	</div>
 </form>
 </body>
 </html>
