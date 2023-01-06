@@ -43,12 +43,13 @@ public class UserEditConnection extends HttpServlet {
 		//usersList.jspで指定したパラメータをgetParameterでString user_idに格納
 		String user_id = (String)request.getParameter("user_id");
 		
-		//user_idがnullだった場合
+		/*//user_idがnullだった場合
 		if(user_id==null)
 		{
 			//UserEditConfirmItemで指定したパラメータをgetAttributeでuser_idに格納
 			user_id = (String)request.getAttribute("user_id");
-		}
+		}*/
+		
 		System.out.println(user_id);
 		
 		UsersDao usersDao;

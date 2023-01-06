@@ -18,6 +18,7 @@ public class UserRegisterItem extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
+	
     public UserRegisterItem() {
         super();
         // TODO Auto-generated constructor stub

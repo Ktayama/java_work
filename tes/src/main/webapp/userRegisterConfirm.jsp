@@ -21,7 +21,7 @@
 
 <script src="item.js"></script>
    <p></p>
-<form action="UserRegisterConfirmItem" method="post">
+<form action="UserRegister" method="post">
 <div class="boxwrap">
 	<p>
 	ユーザ名
@@ -47,9 +47,16 @@
 	<!-- type="submit"では送信ボタンとしての機能-->
 	<p><button type="submit"name="prm_confirm"value="登録">登録</button></p>
 	
-	<button type="submit"name="prm_confirm"value="戻る">戻る</button>
+	
 </div>	
 </form>
 
+<form action="UserConnection" method="post">
+<div class="center">
+<!-- type="submit"では送信ボタンとしての機能-->
+<button type="submit">戻る</button>
+
+</div>
+</form>
 </body>
 </html>

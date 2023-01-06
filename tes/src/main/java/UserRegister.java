@@ -41,43 +41,51 @@ public class UserRegister extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		
-		//usersRegisterConfirm.jspでsubmitで指定したパラメータを各々指定して格納
-		String userName = (String) request.getAttribute("UserName");
-		String userPass = (String) request.getAttribute("UserPass");
-		String adminFlag = (String) request.getAttribute("AdminFlag");
-		System.out.println(adminFlag);
-		//adminFlagが「あり」の場合
-		if(adminFlag.equals("あり")) {
+		//userRegisterConfirm.jspでhiddenで指定したパラメーターをgetParameterでprm_confirmに格納
+		String prm_confirm= request.getParameter("prm_confirm");
+		
+		//equalsで登録の文字列比較を行う
+		if(prm_confirm.equals("登録")) 
+		{
+			//usersRegisterConfirm.jspでsubmitで指定したパラメータを各々指定して格納
+			String userName = (String) request.getParameter("userName");
+			String userPass = (String) request.getParameter("userPass");
+			String adminFlag = (String) request.getParameter("adminFlag");
+			System.out.println(adminFlag);
+			
+			//adminFlagが「あり」の場合
+			if(adminFlag.equals("あり")) {
 			//adminFlagに１の文字列を設定
-			adminFlag ="1";
-		}else {
+				adminFlag ="1";
+			}else {
 			//adminFlagに0の文字列を設定
 			adminFlag ="0";
-		}
-		//byte型のadminFlagByte変数を用意して、byte型に変換したadminFlag設定してadminFlagByteに格納
-		byte adminFlagByte = Byte.parseByte(adminFlag);
-		
-		System.out.println(userName);
-		System.out.println(userPass);
-		System.out.println(adminFlagByte);
-		
+			}
+			//byte型のadminFlagByte変数を用意して、byte型に変換したadminFlag設定してadminFlagByteに格納
+			byte adminFlagByte = Byte.parseByte(adminFlag);
+			
+			System.out.println(userName);
+			System.out.println(userPass);
+			System.out.println(adminFlagByte);
+			
 			try {
-			//UsersDaoのインスタンス化
-			UsersDao usersDao = new UsersDao();
+				//UsersDaoのインスタンス化
+				UsersDao usersDao = new UsersDao();
 			
-			//usersDaoのInsertメソットを呼び出して、userPass, userName, adminFlagByteをセットさせる
-			usersDao.Insert(userPass, userName, adminFlagByte);
+				//usersDaoのInsertメソットを呼び出して、userPass, userName, adminFlagByteをセットさせる
+				usersDao.Insert(userPass, userName, adminFlagByte);
 			
-			} catch (Exception e1) {
+				} catch (Exception e1) {
 			
 				e1.printStackTrace();
 			}
-	try {
-		//UserConnectionに遷移
-		RequestDispatcher  dispacher = request.getRequestDispatcher("./UserConnection");
-		dispacher.forward(request, response);
-		}catch (Exception e) {
-			e.printStackTrace();
+			try {
+				//UserConnectionに遷移
+				RequestDispatcher  dispacher = request.getRequestDispatcher("./UserConnection");
+				dispacher.forward(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
