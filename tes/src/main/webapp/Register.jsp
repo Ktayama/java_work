@@ -33,7 +33,7 @@
 
 <%//questions_textパラメータ %>
 
-<form action="Register_item" method="post">
+<form action="Register_Confirm_List" method="post">
 	<div class="boxwrap">
 		<div class="questionDeploy">
 		<p><font size="5"> 問題</font></p>

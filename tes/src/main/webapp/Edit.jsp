@@ -35,11 +35,11 @@ ArrayList<Correct_answersBean> Correct_anser_list = (ArrayList<Correct_answersBe
 
 
 <script src="item.js"></script>
-<form action="Edit_item" method="post"> 
+<form action="Edit_List" method="post"> 
 		
 		<div class="boxwrap">
 		<div class="questionDeploy">
-		<label>番号<%=questionsBean.getId()%></label>	<br>
+		番号<%=questionsBean.getId()%><br>
 		
 		
 		<!-- input type="text"でテキストボックスを生成している。 value="=questionsBean.getQuestion()"ではLIst.jspで入力の値を表示 -->
@@ -75,14 +75,19 @@ ArrayList<Correct_answersBean> Correct_anser_list = (ArrayList<Correct_answersBe
 		</div>
 		<div class="center">
 		
-		<button type="submit"name="edit_prm_confirm" value="確認">確認</button>
+		
 		<!-- type="submit"では送信ボタンとしての機能、value="確認"で初期値を指定している-->
 		<!-- <input type="submit" name="edit_prm_confirm" value="確認" > -->
 		<!-- type="submit"では送信ボタンとしての機能、value="戻る"で初期値を指定している-->
 		<!-- <input type="submit" name="edit_prm_confirm" value="戻る" >  -->
+		<button type="submit"name="edit_prm_confirm" value="確認">確認</button>
 		
-		<button type="submit" name="edit_prm_confirm" value="戻る">戻る</button>
 		</div>
+</form>
+<form action="List_Connection" method="post">
+<div class="center">
+	<button type="submit" name="edit_prm_confirm" value="戻る">戻る</button>
+</div>
 </form>
 <div class="deploy">
 	<!-- 追加ボタンで表示onclickイベント設定 -->

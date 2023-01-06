@@ -25,7 +25,7 @@ QuestionsBean questionsBean = (QuestionsBean)request.getAttribute("Questions_lis
 
 
 
-<form action="./Delete_Confirm_item" method="post"> 
+<form action="./Delete" method="post">
  <script src="item.js"></script>
 <div class="boxwrap">
  <div class="questionDeploy">
@@ -54,11 +54,18 @@ QuestionsBean questionsBean = (QuestionsBean)request.getAttribute("Questions_lis
 		<!-- <input type="submit" name="delete_prm_confirm" value="削除" > -->
 		<!-- <input type="submit" name="delete_prm_confirm" value="戻る" > -->
 		<button type="submit"name="delete_prm_confirm" value="削除">削除</button>
-		<button type="submit"name="delete_prm_confirm" value="戻る">戻る</button>
+		
 		
 		</div>
 	
 </form>
 
+<form action="./List_Connection" method="post">
+	<div class="center">
+	
+	<button type="submit"name="delete_prm_confirm" value="戻る">戻る</button>
+	
+	</div>
+</form>
 </body>
 </html>

@@ -50,17 +50,20 @@
 			<% }%>
 			</div>
 	</div>
-		<div class="center">
+	
+<div class="center">
+		
 		
 		<button type="submit"name="prm_edit_confirm" value="更新">更新</button>
+		
+		
 		<button type="submit"name="prm_edit_confirm" value="戻る">戻る</button>
 		<!-- type="submit"では送信ボタンとしての機能、value="更新"で初期値を指定している-->
 		<!--  <input type="submit" name="prm_edit_confirm" value="更新" > -->
 		<!-- type="submit"では送信ボタンとしての機能、value="戻る"で初期値を指定している-->
 		<!--  <input type="submit" name="prm_edit_confirm" value="戻る" > -->
-		</div>
+</div>
 </form>
-
 
 
 </body>
