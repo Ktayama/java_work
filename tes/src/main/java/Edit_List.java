@@ -75,7 +75,7 @@ public class Edit_List extends HttpServlet {
 				}
 			}
 			//文字数が500文字以内かつ入力されているかつ文字が画面に存在する場合
-			if ((param.length() <= 500) && (param!="" && param!=null))
+			if ((param.length() <= 500) && (!param.equals("") && param!=null))
 			{
 				//文字数okならconfirm.jspに飛ばす
 				request.setAttribute("Questions",param);
@@ -93,7 +93,16 @@ public class Edit_List extends HttpServlet {
 				RequestDispatcher dispacher = request.getRequestDispatcher("./Edit_Confirm.jsp");
 				dispacher.forward(request, response);
 				//エラー文字をjqpに表示させる
-			} /* else {
+			}else {
+				request.setAttribute("a_text",error);
+				//文字数オーバーだったらngでRsgister.jspに戻す
+				System.out.println("no");
+				request.setAttribute("questions_id",param_questions_id);
+				RequestDispatcher dispacher = request.getRequestDispatcher("./Edit_Connection");
+				dispacher.forward(request, response);
+			}
+			
+			/* else {
 				
 				//edit.jspに戻すと思う
 				request.setAttribute("a_text",error);

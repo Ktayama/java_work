@@ -77,7 +77,7 @@ public class Register_Confirm_List extends HttpServlet {
 				}
 			}
 			//文字数が500文字以内かつ入力されているかつ文字が画面に存在する場合
-			if ((param.length() <= 500) && (param!="" && param!=null))
+			if ((param.length() <= 500) && (!param.equals("") && param!=null))
 			{
 				//setAttributeでパラメータをセット
 				request.setAttribute("Qusertions_text",param);
